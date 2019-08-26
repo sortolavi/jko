@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>jääkaapinovi</title>
+
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="node_modules/mdi/css/materialdesignicons.min.css" media="all">
+	<link rel="stylesheet" href="css/default.css" media="all">
+
+    <style type="text/css" media="screen">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+            display: none !important;
+        }
+	</style>
+
+    <!-- <base href="/angularjs/_projects/jko0401/"> -->
+</head>
+
+<body ng-app="jko">
+
+
+
+	<ui-view></ui-view>
+   
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-i18n/angular-locale_fi-fi.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="node_modules/lodash/lodash.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+    <script src="scripts/app.js"></script>
+
+    <script src="components/jko/jko.ctr.js"></script>
+    <script src="components/jko/jko.fac.js"></script>
+
+    <script src="components/jko/login/jko.login.ctr.js"></script>
+    <script src="components/jko/new/jko.new.ctr.js"></script>
+    <script src="components/jko/edit/jko.edit.ctr.js"></script>
+
+
+	<script>
+        // auth
+        // https://www.reddit.com/r/javascript/comments/4slb60/angularjs_firebase_to_auth_with_google/
+
+        // https://kieldev.wordpress.com/2017/02/08/firebase-authentication-using-angularjs/
+        // https://kieldev.wordpress.com/2017/02/11/firebase-implementing-firebaseui-for-web-authentication/
+
+        // https://github.com/firebase/angularfire/blob/master/docs/reference.md#signinwithemailandpasswordemail-password
+
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyC3roL65WCRRFBXBpMt05vUTUVCo5rjulc",
+			authDomain: "jaakaapinovi-3b9bd.firebaseapp.com",
+			databaseURL: "https://jaakaapinovi-3b9bd.firebaseio.com",
+			projectId: "jaakaapinovi-3b9bd",
+			storageBucket: "jaakaapinovi-3b9bd.appspot.com",
+			messagingSenderId: "1031993758795"
+		};
+		firebase.initializeApp(config);
+
+        
+	</script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+
+md-backdrop {
+	position:fixed;
+}
+md-card img {
+  width: 100%;
+  height: auto !important;
+  min-height: 0px;
+}
+md-card {
+	height:100%;
+} 
+button .material-icons, a .material-icons {
+  margin-top: -12px;
+}
+.md-button#clear {
+	margin-top:0;
+}
+.md-button {
+	margin: 0;
+	min-width: 0;
+}
+.md-button.fat {
+	margin: 0 10px;
+}
+.pun {
+	border: 2px solid red;
+}
+.btn1 {
+	color : rgb(49, 46, 46);
+	background-color: rgba(255, 222, 121, 0.96);
+}
+.btn1:not([disabled]):hover {
+	background-color: rgba(107, 103, 91, 0.96);
+	color: white;
+}
+/*md-icon.mdi.mdi-open-in-new {
+	margin-top: 6px;
+}*/
+.jko.ng-enter, .jko.ng-move {
+	transition: 0.5s all;
+	opacity: 0;
+}
+.jko.ng-enter.ng-enter-active, .jko.ng-move.ng-move-active {
+	opacity: 1;
+}
+.jko.ng-leave {
+	animation: 0.5s fade_jko;
+}
+@keyframes fade_jko {
+	from { opacity: 1; }
+	to { opacity: 0; }
+}
+
+/*BLACK UP-POINTING TRIANGLE*/
+.sortorder:after {
+  content: '\25b2';
+}
+/*BLACK DOWN-POINTING TRIANGLE*/
+.sortorder.reverse:after {
+  content: '\25bc';
+}
+.admin_title {
+    color: yellow;
+}

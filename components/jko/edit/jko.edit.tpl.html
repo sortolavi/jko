@@ -1,0 +1,66 @@
+
+
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-open="sidenavOpen" ng-cloak>
+    <md-toolbar class="md-theme-light">
+        <h1 ng-if="vm.item.name" class="md-toolbar-tools">{{ vm.item.name }}</h1>
+        <!-- <h1 ng-if="!vm.item.name" class="md-toolbar-tools">Uusi kohde</h1> -->
+    </md-toolbar>
+    <md-content layout-padding>
+        <form>
+            <md-input-container>
+                <label for="title">Url</label>
+                <input type="text" id="url" ng-model="vm.item.url" md-autofocus>
+            </md-input-container>
+            <md-input-container>
+                <label for="image">Kuva</label>
+                <input type="text" id="image" ng-model="vm.item.image">
+            </md-input-container>
+            <md-input-container>
+                <label for="title">Nimi</label>
+                <input type="text" id="title" ng-model="vm.item.name">
+            </md-input-container>
+            <md-input-container>
+                <label for="price">Hinta</label>
+                <input type="text" id="price" ng-model="vm.item.price">
+            </md-input-container>
+            <md-input-container>
+                <label for="description">Tiedot</label>
+                <textarea type="text" id="description" ng-model="vm.item.desc"></textarea>
+            </md-input-container>
+            <md-input-container>
+                <label for="images">Kaikki kuvat</label>
+                <input type="text" id="images" ng-model="vm.item.images">
+            </md-input-container>
+            <md-input-container>
+                <label for="map">Kartta</label>
+                <input type="text" id="map" ng-model="vm.item.map">
+            </md-input-container>
+            <md-input-container>
+                <label for="shiproute">Yhteysalus</label>
+                <input type="text" id="shiproute" ng-model="vm.item.shiproute">
+            </md-input-container>
+            <md-input-container>
+                <label for="category">Kategoriat</label>
+                <!-- <textarea type="text" id="description" ng-model="vm.item.catString"></textarea> -->
+                <textarea type="text" id="description" ng-model="vm.item.categories"></textarea>
+            </md-input-container>
+            <!-- http://stackoverflow.com/questions/14514461/how-do-i-bind-to-list-of-checkbox-values-with-angularjs -->
+            <!-- 				<div layout="row">
+					<label ng-repeat="cat in categories">
+					<input type='checkbox' ng-checked="checkedCategories.indexOf(cat) != -1" ng-click="toggleCheck(cat)"/>{{cat}} 
+				</label>
+				</div>
+				<div layout="row">
+				{{ checkedCategories }} -->
+            <div layout="row">
+                <!-- <md-button ng-if="!vm.editing" ng-click="vm.saveItem(vm.item)" class="md-primary fat">Tallenna</md-button> -->
+                <md-button ng-click="vm.saveEdit()" class="md-primary fat">Tallenna Edt</md-button>
+                <md-button ng-click="vm.closeSidebar()" class="md-warn fat">Peruuta</md-button>
+            </div>
+            <!-- <pre>
+					{{vm.item | json}}
+				</pre> -->
+        </form>
+    </md-content>
+</md-sidenav>

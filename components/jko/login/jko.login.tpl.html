@@ -1,0 +1,35 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-open="sidenavOpen" ng-cloak>
+
+    <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Login</h1>
+    </md-toolbar>
+
+    <md-content layout-padding>
+        <form name="loginform">
+        
+            <md-input-container>
+                <label for="email">Email</label>
+                <input type="email" name="email" ng-model="vm.email" ng-required="true" md-autofocus>
+                <div ng-messages="loginform.email.$error">
+                    <div ng-message="required">Email vaaditaan</div>
+                </div>
+                <!-- <p class="error validationerror" ng-show="loginform.email.$invalid && loginform.email.$touched">Email puuttuu</p> -->
+            </md-input-container>
+
+            <md-input-container>
+                <label for="password">Salasana</label>
+                <input type="password" name="password" ng-model="vm.password" ng-required="true">
+                <div ng-messages="loginform.password.$error">
+                    <div ng-message="required">Salasana vaaditaan</div>
+                </div>
+            </md-input-container>
+            
+            
+            <div layout="row">
+                <md-button ng-click="vm.login(vm.email, vm.password)" class="md-primary fat" ng-disabled="loginform.$invalid">Login</md-button>
+                <md-button ng-click="vm.closeSidebar()" class="md-warn fat">Peruuta</md-button>
+            </div>
+           
+        </form>
+    </md-content>
+</md-sidenav>

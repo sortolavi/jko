@@ -1,0 +1,104 @@
+	<md-toolbar layout="row" layout-align="space-around center" ng-cloak>
+	
+		<span>
+			<p><span ng-class="{admin_title: vm.adminStyle}">Jääkaapinovi</span>
+				<md-icon ng-if="jkoCategory" class="mdi mdi-menu-right"></md-icon>{{ jkoCategory }}
+				<md-icon ng-if="jkoFilter" class="mdi mdi-menu-right"></md-icon>{{ jkoFilter }}
+			</p>
+		</span>
+		<span>
+			<md-button ng-if="!vm.adminStyle" class="fat" ng-click="vm.addNewItem()" title="Kirjaudu tunnuksilla">
+				<md-icon ng-show="!vm.adminStyle" class="mdi mdi-login"></md-icon>Login
+			</md-button>
+
+			<md-button ng-if="vm.adminStyle" class="fat" ng-click="vm.addNewItem()" title="Lisää uusi kohde">
+				<md-icon class="mdi mdi-cloud-upload"></md-icon>Lisää uusi
+			</md-button>
+
+			<md-button class="fat" ng-click="showFilters = !showFilters" title="Etsi kohteita kategorian tai hakutermin mukaan">
+				<md-icon class="mdi mdi-magnify"></md-icon>Etsi
+			</md-button>
+		</span>
+
+	</md-toolbar>
+
+	
+	<ui-view></ui-view>
+	
+
+
+	<div class="filters" layout="row" layout-align="end" ng-show="showFilters">
+		<md-input-container>
+			<label>Kategoriat</label>
+			<md-select ng-model="jkoCategory">
+			  <md-option ng-value="category" ng-repeat="category in vm.categories" value="{{ category }}">{{ category }}</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container>
+			<label>Hakutermi</label>
+			<input type="text" ng-model="jkoFilter">
+		</md-input-container>
+
+		<md-input-container>
+			<md-button class="fat" ng-click="vm.sortBy('price')">Hinta</md-button>
+			<span class="sortorder" ng-show="vm.propertyName === 'price'" ng-class="{reverse:vm.reverse}"></span>
+		</md-input-container>
+		
+		<md-input-container>
+			<md-button class="fat" ng-click="jkoFilter='';jkoCategory='';">Tyhjää</md-button>
+		</md-input-container>
+	</div>
+
+
+
+
+
+	
+	<!-- <pre>Sort by = {{ vm.propertyName }}; reverse = {{ vm.reverse }}</pre> -->
+	
+
+	<md-content class="md-padding" layout-xs="column" layout="row" layout-wrap ng-cloak>
+		<div class="jko" flex-xs flex-gt-xs="20" layout="column" ng-repeat="item in vm.items | orderBy:vm.propertyName:vm.reverse:vm.mySort | filter: jkoFilter | filter: jkoCategory">
+		    <md-card>
+		    	<img class="md-card-image" ng-src="{{ item.image }}" alt="{{ item.image }}">
+
+		    	<md-card-content>
+		    	<!-- <p>{{key}}</p> -->
+		    		<h2 class="md-title">{{ item.name }}</h2>
+		    		<h4 class="md-subhead">{{ item.price | currency: "€":0 }}</h4>
+		    		<p>{{ item.desc }}</p>
+		    	</md-card-content>
+
+		    	<md-card-footer>    	
+		    		<div layout="row">
+		    		<span ng-show="vm.adminStyle">
+		    			<md-button ng-click="showAdmin = true" ng-show="!showAdmin"><md-icon class="mdi mdi-menu" aria-label="Admin"></md-icon></md-button>
+		    			<md-button ng-click="showAdmin = false" ng-show="showAdmin"><md-icon class="mdi mdi-reply" aria-label="Palaa"></md-icon></md-button>
+						<md-button class="md-primary" ng-click="vm.editItem(item)" ng-show="showAdmin">Muokkaa</md-button>
+						<md-button class="md-warn" ng-click="vm.deleteItem($event, item)" ng-show="showAdmin">Poista</md-button>
+		    		</span>
+		    		
+		    			<md-button href="{{ item.url }}" target="_blank" rel="noopener" ng-show="!showAdmin" ng-if="item.url" title="Alkuperäinen sivu">
+		    				<md-icon class="mdi mdi-file" aria-label="Original Source"></md-icon>
+		    			</md-button>
+
+		    			<md-button href="{{ item.images }}" target="_blank" rel="noopener" ng-show="!showAdmin" ng-if="item.images" title="Kaikki kuvat">
+		    				<md-icon class="mdi mdi-image-album" aria-label="All Images"></md-icon>
+		    			</md-button>
+
+		    			<md-button href="{{ item.map }}" target="_blank" rel="noopener" ng-show="!showAdmin" ng-if="item.map" title="Kartta">
+			    			<md-icon class="mdi mdi-map" aria-label="Map"></md-icon>
+			    		</md-button>
+
+			    		<md-button href="{{ item.shiproute }}" target="_blank" rel="noopener" ng-show="!showAdmin" ng-if="item.shiproute" title="Yhteysalus">
+			    			<md-icon class="mdi mdi-timetable" aria-label="Ship routes"></md-icon>
+			    		</md-button>
+					
+						
+					</div>	
+		    	</md-card-footer>
+
+		    </md-card>
+	   	</div>
+	</md-content>
